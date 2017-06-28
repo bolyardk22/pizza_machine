@@ -7,6 +7,18 @@ def size_func
 	size = ["personal pan","medium","large"].sample
 end
 
+def price_size
+	if size_func == "personal pan"
+		sizeprice = 500.to_i
+	elsif size_func == "medium"
+		sizeprice = 800.to_i
+	elsif size_func == "large"
+		sizeprice = 1000.to_i
+	else
+		sizeprice = 10000.to_i
+	end
+end
+
 def crust_func
 	crust = ["pan","hand tossed","thin 'n crispy","original stuffed","skinny it up"].sample
 end
@@ -17,6 +29,15 @@ end
 
 def cheese_func
 	cheese = ["no cheese","light cheese","regular cheese","extra cheese"].sample
+end
+
+def price_cheese
+	cheeseprice = 5
+#	if cheese_func == "extra cheese"
+#		cheeseprice = 1
+#	else
+#		cheeseprice = 0
+#	end
 end
 
 def crust_flavor_func
@@ -38,9 +59,19 @@ def meat_func
 			meats.push(many_meat = ["pepperoni, ","italian sausage, ","salami, ","meatball, ","ham, ","bacon, ","grilled chicken, ","beef, ","pork, "].sample)
 	end
 end
-
 	meats.uniq
 end
+
+def price_meat
+	meatprice = 2
+#	if meats.count <= 2
+#		meatprice = 0
+#	else
+#		meatprice = meats.count * 1
+#	end
+end
+
+
 
 def veggie_amount
 	veggieamount = rand(0..20)
@@ -61,9 +92,22 @@ end
 	veggies.uniq
 end
 
+def price_veggies
+	veggieprice = 1
+#	if veggies.count <= 2
+#		veggieprice = 0
+#	else
+#		veggieprice = veggies.count * 1
+#	end
+end
+
+def price_func
+	price_size + price_cheese + price_meat + price_veggies
+end
+
 n = 1
 
 welcome.times do
-	puts "Pizza number #{n} is a #{size_func} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheese_func}"
+	puts "Pizza number #{n} is a #{size_func} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheese_func}.\n\n This pizza costs #{price_func}.\n\n"
 	n += 1
 end
