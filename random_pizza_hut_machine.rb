@@ -1,5 +1,5 @@
 def welcome
-	p "Welcome to Pizza Hut! How many random pizzas would you like today?"
+	puts "Welcome to Pizza Hut! How many random pizzas would you like today?"
 	x = gets.chomp.to_i
 end
 
@@ -64,6 +64,6 @@ end
 n = 1
 
 welcome.times do
-	p "Pizza number #{n} is a #{size_func} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheese_func}!"
+	puts "Pizza number #{n} is a #{size_func} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheese_func}"
 	n += 1
 end
