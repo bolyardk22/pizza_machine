@@ -1,5 +1,5 @@
 def welcome
-	puts "Welcome to Random Pizza Hut! How many random pizzas would you like today?"
+	puts "Welcome to Pizza Hut! How many random pizzas would you like today?"
 	x = gets.chomp.to_i
 end
 
@@ -62,14 +62,16 @@ def meat_func
 	meats.uniq
 end
 
-def price_meat(meatprice)
-	meatscountprice = (meatprice.count).to_i
-	if meatscountprice <= 2
-		finalmeatprice = 0
-	else
-		finalmeatprice = meatscountprice - 2
-	end
-end
+#def price_meat
+#	meatprice = 2
+#	if meats.count <= 2
+#		meatprice = 0
+#	else
+#		meatprice = meats.count * 1
+#	end
+#end
+
+
 
 def veggie_amount
 	veggieamount = rand(0..20)
@@ -89,35 +91,21 @@ def veggie_func
 	veggies.uniq
 end
 
-def price_veggies (veggieprice)
-	veggiecountprice = (veggieprice.count).to_i
-	if veggiecountprice <= 2
-		veggieprice = 0
-	else
-		veggiecountprice = veggiecountprice - 2
-	end
-end
-
-total_cost = []
+#def price_veggies
+#	veggieprice = 1
+#	if veggies.count <= 2
+#		veggieprice = 0
+#	else
+#		veggieprice = veggies.count * 1
+#	end
+#end
 
 n = 1
 
 welcome.times do
 	sizeme = size_func
 	cheeseme = cheese_func
-	meatme = meat_func
-	vegme = veggie_func
-	total_price = (price_size (sizeme)).to_i + (price_cheese (cheeseme)).to_i + (price_meat (meatme)).to_i + (price_veggies (vegme)).to_i
-	puts "Pizza number #{n} is a #{sizeme} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meatme.join}#{veggie_func.join}and #{cheeseme}.\n\nThis pizza costs $#{total_price}.\n\n"
-	total_cost.push(total_price)
+	total_price = (price_size (sizeme)).to_i + (price_cheese (cheeseme)).to_i #+ price_meat + price_veggies
+	puts "Pizza number #{n} is a #{sizeme} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheeseme}.\n\n This pizza costs #{total_price}.\n\n"
 	n += 1
 end
-
-final_price = total_cost.inject(0, :+)
-
-puts "Your total cost is $#{final_price}. Please enter the amount of cash you will be paying with today."
-
-cash = gets.to_i
-
-puts "Your change is $#{cash - final_price}. Have a nice day, and thanks for choosing Random Pizza Hut!"
-

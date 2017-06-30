@@ -1,5 +1,5 @@
 def welcome
-	puts "Welcome to Random Pizza Hut! How many random pizzas would you like today?"
+	puts "Welcome to Pizza Hut! How many random pizzas would you like today?"
 	x = gets.chomp.to_i
 end
 
@@ -7,13 +7,15 @@ def size_func
 	size_arr = ["personal pan","medium","large"].sample
 end
 
-def price_size (size)
-	if size == "personal pan"
-		sizeprice = 5.to_i
-	elsif size == "medium"
-		sizeprice = 8.to_i
-	elsif size == "large"
-		sizeprice = 10.to_i
+asdf = size_func
+
+def price_size
+	if asdf == "personal pan"
+		sizeprice = 500.to_i
+	elsif asdf == "medium"
+		sizeprice = 800.to_i
+	elsif asdf == "large"
+		sizeprice = 1000.to_i
 	else
 		sizeprice = 10000.to_i
 	end
@@ -31,12 +33,13 @@ def cheese_func
 	cheese = ["no cheese","light cheese","regular cheese","extra cheese"].sample
 end
 
-def price_cheese(cheeses)
-	if cheeses == "extra cheese"
-		cheeseprice = 1
-	else
-		cheeseprice = 0
-	end
+def price_cheese
+	cheeseprice = 5
+#	if cheese_func == "extra cheese"
+#		cheeseprice = 1
+#	else
+#		cheeseprice = 0
+#	end
 end
 
 def crust_flavor_func
@@ -62,14 +65,16 @@ def meat_func
 	meats.uniq
 end
 
-def price_meat(meatprice)
-	meatscountprice = (meatprice.count).to_i
-	if meatscountprice <= 2
-		finalmeatprice = 0
-	else
-		finalmeatprice = meatscountprice - 2
-	end
+def price_meat
+	meatprice = 2
+#	if meats.count <= 2
+#		meatprice = 0
+#	else
+#		meatprice = meats.count * 1
+#	end
 end
+
+
 
 def veggie_amount
 	veggieamount = rand(0..20)
@@ -89,35 +94,22 @@ def veggie_func
 	veggies.uniq
 end
 
-def price_veggies (veggieprice)
-	veggiecountprice = (veggieprice.count).to_i
-	if veggiecountprice <= 2
-		veggieprice = 0
-	else
-		veggiecountprice = veggiecountprice - 2
-	end
+def price_veggies
+	veggieprice = 1
+#	if veggies.count <= 2
+#		veggieprice = 0
+#	else
+#		veggieprice = veggies.count * 1
+#	end
 end
 
-total_cost = []
+def price_func
+	price_size + price_cheese + price_meat + price_veggies
+end
 
 n = 1
 
 welcome.times do
-	sizeme = size_func
-	cheeseme = cheese_func
-	meatme = meat_func
-	vegme = veggie_func
-	total_price = (price_size (sizeme)).to_i + (price_cheese (cheeseme)).to_i + (price_meat (meatme)).to_i + (price_veggies (vegme)).to_i
-	puts "Pizza number #{n} is a #{sizeme} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meatme.join}#{veggie_func.join}and #{cheeseme}.\n\nThis pizza costs $#{total_price}.\n\n"
-	total_cost.push(total_price)
+	puts "Pizza number #{n} is a #{asdf} pizza with #{crust_func} crust, #{sauce_func}, #{crust_flavor_func}, #{meat_func.join}#{veggie_func.join}and #{cheese_func}.\n\n This pizza costs #{price_func}.\n\n"
 	n += 1
 end
-
-final_price = total_cost.inject(0, :+)
-
-puts "Your total cost is $#{final_price}. Please enter the amount of cash you will be paying with today."
-
-cash = gets.to_i
-
-puts "Your change is $#{cash - final_price}. Have a nice day, and thanks for choosing Random Pizza Hut!"
-
