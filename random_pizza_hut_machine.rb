@@ -119,5 +119,12 @@ puts "Your total cost is $#{final_price}. Please enter the amount of cash you wi
 
 cash = gets.to_i
 
-puts "Your change is $#{cash - final_price}. Have a nice day, and thanks for choosing Random Pizza Hut!"
-
+loop do
+	if cash >= final_price
+		puts "Your change is $#{cash - final_price}. Have a nice day, and thanks for choosing Random Pizza Hut!"
+		break
+	else
+		puts "Insufficient funds. Your total cost is $#{final_price}. Please enter the amount of cash you will be paying with today."
+		cash = gets.to_i
+	end
+end
